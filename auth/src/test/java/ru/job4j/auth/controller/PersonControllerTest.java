@@ -52,7 +52,7 @@ public class PersonControllerTest {
 
     @Test
     public void findAll() throws Exception {
-        List<Person> persons = List.of(Person.of("Ivan", "123"));
+        List<Person> persons = List.of(Person.of(0, "Ivan", "123"));
         when(personService.findAll()).thenReturn(persons);
         this.mockMvc.perform(get("/person/"))
                 .andDo(print())
@@ -70,7 +70,7 @@ public class PersonControllerTest {
 
     @Test
     public void whenFoundById() throws Exception {
-        Person person = Person.of("Ivan", "123");
+        Person person = Person.of(0, "Ivan", "123");
         when(personService.findById(0)).thenReturn(Optional.of(person));
         String json = gson.toJson(person);
         this.mockMvc.perform(post("/person/")
@@ -89,7 +89,7 @@ public class PersonControllerTest {
 
     @Test
     public void create() throws Exception {
-        Person person = Person.of("Ivan", "123");
+        Person person = Person.of(0, "Ivan", "123");
         String json = gson.toJson(person);
         this.mockMvc.perform(post("/person/")
                         .contentType(MediaType.APPLICATION_JSON)
@@ -104,7 +104,7 @@ public class PersonControllerTest {
 
     @Test
     public void whenUpdate() throws Exception {
-        Person person = Person.of("Ivan", "123");
+        Person person = Person.of(0, "Ivan", "123");
         String json = gson.toJson(person);
         this.mockMvc.perform(post("/person/")
                         .contentType(MediaType.APPLICATION_JSON)
@@ -122,7 +122,7 @@ public class PersonControllerTest {
 
     @Test
     public void whenDelete() throws Exception {
-        Person person = Person.of("Ivan", "123");
+        Person person = Person.of(0, "Ivan", "123");
         String json = gson.toJson(person);
         this.mockMvc.perform(post("/person/")
                         .contentType(MediaType.APPLICATION_JSON)

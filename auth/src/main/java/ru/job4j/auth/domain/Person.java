@@ -21,8 +21,9 @@ public class Person {
     private String login;
     private String password;
 
-    public static Person of(String login, String password) {
+    public static Person of(int id, String login, String password) {
         Person person = new Person();
+        person.id = id;
         person.login = login;
         person.password = password;
         return person;
